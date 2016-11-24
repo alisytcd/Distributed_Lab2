@@ -20,16 +20,16 @@ class ClientThread(Thread):
             data = conn.recv(2048) 
             if data[:12] == "KILL_SERVICE":
                 break
-            if data == "HELO text":
+            if data[:3] == "HELO":
                 print "Server received data:", data
                 MESSAGE = "HELO text\nIP:["+str(ip)+"]\nPort:["+str(port)+"]\nStudentID:[13323690]\n"  
                 conn.send(MESSAGE)  
 
-            print "Server received data:", data
-            MESSAGE = raw_input("Multithreaded Python server : Enter Response from Server/Enter exit:")
-            if MESSAGE == 'exit':
-                break
-            conn.send(MESSAGE)  # echo 
+            #print "Server received data:", data
+           # MESSAGE = raw_input("Multithreaded Python server : Enter Response from Server/Enter exit:")
+           # if MESSAGE == 'exit':
+           #     break
+           # conn.send(MESSAGE)  # echo 
  
 # Multithreaded Python server : TCP Server Socket Program Stub
 TCP_IP = '0.0.0.0' 
